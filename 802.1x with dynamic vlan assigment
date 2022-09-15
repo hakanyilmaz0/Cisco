@@ -1,0 +1,18 @@
+aaa authentication login default local none
+aaa authentication enable default none
+aaa authentication dot1x default group radius
+aaa authorization network default group radius 
+
+radius server RADIUS
+ address ipv4 172.17.21.12 auth-port 1645 acct-port 1646
+ key 7 14411111111111C
+!
+
+interface GigabitEthernet1/0/7
+ switchport mode access
+ access-session host-mode single-host
+ dot1x port-control auto
+ dot1x pae authenticator
+!
+
+
